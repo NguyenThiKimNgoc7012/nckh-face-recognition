@@ -42,7 +42,7 @@ Dự án tập trung xây dựng một hệ thống nhận diện khách hàng t
 ## 📎 Thư mục chính
 - `src/` – Code xử lý nhận diện khuôn mặt
 - `web/` – Giao diện website quản lý khách hàng
-- `dataset/` – Dữ liệu huấn luyện (ẩn hoặc đã được xử lý)
+- `dataset/` – Dữ liệu huấn luyện 
 - `docs/` – Báo cáo & tài liệu đính kèm
 
 ## 🧠 Những gì chúng mình học được
