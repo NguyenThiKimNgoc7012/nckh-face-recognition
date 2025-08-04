@@ -1,0 +1,23 @@
+# Bỏ qua thư mục môi trường ảo
+venv/
+myenv/
+
+# File biên dịch Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# File hệ thống
+.DS_Store
+
+# File nặng hoặc tạm
+*.so
+*.dylib
+
+# Bỏ thư mục IDE (nếu có)
+.vscode/
+.idea/
+
+# Thư mục đầu ra
+*.log
