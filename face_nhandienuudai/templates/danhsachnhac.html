@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nhạc Nền</title>
+    <link rel="stylesheet" href="css/dsamthanh.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #ede7f6);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background: linear-gradient(135deg, #00bfa5, #8e24aa);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #6a1b9a;
+            border-bottom: 3px solid #ba68c8;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        .form-upload {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .file-input {
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #7e57c2;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #26a69a;
+            color: white;
+        }
+        .music-table, .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .music-table th, .music-table td,
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .music-table th {
+            background-color: #9575cd;
+            color: white;
+        }
+        .music-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .schedule-table th {
+            background-color: #7e57c2;
+            color: white;
+        }
+        .schedule-table select, .schedule-table input[type="time"] {
+            padding: 6px;
+            font-size: 14px;
+            border-radius: 4px;
+            width: 100%;
+        }
+        .submit-center {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1> Quản Lý Nhạc Nền</h1>
+    </header>
+    <main class="container">
+        <!-- Tùy chỉnh lịch phát (chuyển lên đầu) -->
+        <section class="section">
+            <h2 class="section-title">Tùy Chỉnh Lịch Phát</h2>
+            <form method="POST" action="/schedule">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Thời điểm</th>
+                            <th>Giờ phát</th>
+                            <th>Chọn nhạc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Buổi sáng</td>
+                            <td><input type="time" name="morning_time"></td>
+                            <td>
+                                <select name="morning_music">
+                                    <option value="">-- Chọn nhạc --</option>
+                                    <option value="Nhạc thư giãn 1.mp3">Nhạc thư giãn 1.mp3</option>
+                                    <option value="Thiền buổi sáng.mp3">Thiền buổi sáng.mp3</option>
+                                    <option value="Giai điệu hạnh phúc.mp3">Giai điệu hạnh phúc.mp3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Buổi trưa</td>
+                            <td><input type="time" name="noon_time"></td>
+                            <td>
+                                <select name="noon_music">
+                                    <option value="">-- Chọn nhạc --</option>
+                                    <option value="Nhạc thư giãn 1.mp3">Nhạc thư giãn 1.mp3</option>
+                                    <option value="Thiền buổi sáng.mp3">Thiền buổi sáng.mp3</option>
+                                    <option value="Giai điệu hạnh phúc.mp3">Giai điệu hạnh phúc.mp3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Buổi tối</td>
+                            <td><input type="time" name="evening_time"></td>
+                            <td>
+                                <select name="evening_music">
+                                    <option value="">-- Chọn nhạc --</option>
+                                    <option value="Nhạc thư giãn 1.mp3">Nhạc thư giãn 1.mp3</option>
+                                    <option value="Thiền buổi sáng.mp3">Thiền buổi sáng.mp3</option>
+                                    <option value="Giai điệu hạnh phúc.mp3">Giai điệu hạnh phúc.mp3</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="submit-center">
+                    <button type="submit" class="btn btn-primary">Cập Nhật Lịch Phát</button>
+                </div>
+            </form>
+        </section>
+        <!-- Tải nhạc -->
+        <section class="section">
+            <h2 class="section-title">Tải Nhạc Lên</h2>
+            <form method="POST" action="/upload" enctype="multipart/form-data" class="form-upload">
+                <input type="file" name="file" class="file-input">
+                <button type="submit" class="btn btn-secondary">Tải Lên</button>
+            </form>
+        </section>
+
+        <!-- Danh sách nhạc -->
+        <section class="section">
+            <h2 class="section-title">Danh Sách Nhạc</h2>
+            <table class="music-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên Bài Hát</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nhạc thư giãn 1.mp3</td>
+                        <td class="action-cell">
+                            <button class="btn-options">&#8942;</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Thiền buổi sáng.mp3</td>
+                        <td class="action-cell">
+                            <button class="btn-options">&#8942;</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Giai điệu hạnh phúc.mp3</td>
+                        <td class="action-cell">
+                            <button class="btn-options">&#8942;</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+       
+    </main>
+</body>
+</html>

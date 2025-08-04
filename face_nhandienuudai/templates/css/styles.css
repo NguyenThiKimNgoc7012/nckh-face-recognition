@@ -1,0 +1,283 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+     background: url('static/hinhanh/nentrangchu.jpg') no-repeat center center; /* Đường dẫn ảnh */
+    background-size: cover; /* Ảnh sẽ phủ toàn bộ header */
+    background-position: center; /* Ảnh căn giữa */
+    background-repeat: no-repeat; /* Không lặp lại */
+    height: 100vh; /* Chiều cao header bằng 100% chiều cao màn hình */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+
+}
+.text-content {
+    flex: 1;
+    padding-right: 20px;
+    text-align: left; /* Căn chỉnh toàn bộ văn bản bên trái */
+    margin-left: 50px; /* Khoảng cách từ bên trái */
+}
+
+.text-content h1 {
+    font-size: 4em;
+    font-weight: bold; /* Chữ đậm */
+    color: #000000; /* Màu chữ đen */
+    text-align: left; /* Căn chữ sang trái */
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Bóng đổ */
+}
+
+/* Thêm margin-bottom cho h1 cuối cùng */
+.text-content h1:last-of-type {
+    margin-bottom: 200px; /* Khoảng cách 50px giữa h1 và p */
+}
+
+.text-content p {
+   font-size: 1.5em; /* Cỡ chữ lớn hơn bình thường */
+    color: #555; /* Màu chữ phụ */
+    margin-top: 20px; /* Khoảng cách từ h1 */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Bóng đổ cho chữ */
+}
+
+/* Đặt margin-top cho p thứ hai nếu cần */
+.text-content .spacing {
+    margin-top: 10px; /* Khoảng cách 10px cho đoạn văn thứ hai */
+}
+
+.text-content .button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.text-content .button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.media-content {
+    flex: 1;
+    text-align: center;
+}
+
+.media-content video {
+    width: 100%;
+    height: auto;
+    max-width: 400px; /* Đảm bảo video không quá lớn */
+}
+
+/* Logo container */
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Đặt logo ở góc trên bên phải */
+}
+
+.logo {
+    width: 80px; /* Kích thước logo nhỏ */
+    height: auto;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .logo {
+        width: 60px; /* Thu nhỏ logo trên màn hình nhỏ */
+    }
+
+    .media-content video {
+        width: 250px; /* Điều chỉnh lại kích thước video cho màn hình nhỏ */
+    }
+}
+
+.text-content .button {
+    background-color: #000000; /* Màu nền đen */
+    color: #ffffff; /* Màu chữ trắng */
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 25px; /* Tạo hình dạng bo tròn cho nút */
+    margin-top: 20px;
+    font-size: 1.1em;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase; /* Chữ viết hoa */
+}
+
+.text-content .button:hover {
+    background-color: #333333; /* Màu nền thay đổi khi hover */
+    transform: scale(1.05);
+}
+
+/* Cấu trúc phần giới thiệu */
+#about {
+    background-color: #f0d1f2;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+}
+
+/* Tiêu đề */
+#about h2 {
+    font-size: 2.5em; /* Cỡ chữ cho tiêu đề */
+    font-weight: bold; /* Chữ đậm */
+    color: #333; /* Màu chữ đen */
+    margin-bottom: 30px;
+    text-align:center;
+}
+
+/* Đoạn văn bản mô tả */
+#about p {
+    font-size: 1.2em; /* Cỡ chữ cho văn bản mô tả */
+    margin-bottom: 20px;
+    text-align: left; /* Căn chữ sang trái */
+    color: #333; /* Màu chữ đen */
+    margin-left: 550px;
+}
+
+/* Nút TÌM HIỂU NGAY */
+#about .button {
+    background-color: #ffffff; /* Màu nền nút */
+    color: #333; /* Màu chữ nút */
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 30px; /* Bo góc nút */
+    font-size: 1.1em;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 2px solid #333; /* Viền nút */
+    margin-left: 0px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+#about .button:hover {
+    background-color: #333; /* Màu nền nút khi hover */
+    color: #ffffff; /* Màu chữ nút khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+}
+
+footer {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-content div {
+    flex: 1;
+}
+
+footer h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 1em;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-content .community-links a {
+    margin-right: 10px;
+}
+
+.footer-content .company-info p,
+.footer-content .contact-info p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.footer-content .certificate img {
+    width: 150px;
+    height: auto;
+}
+
+/* Logo container */
+.logo-container {
+    flex: 0 0 auto;
+    padding-left: 10px;  /* Khoảng cách từ trái */
+}
+
+.logo {
+    width: 80px; /* Kích thước logo */
+    height: auto;
+}
+
+.community-links h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: center; /* Căn giữa các icon trên một hàng */
+    gap: 20px; /* Khoảng cách đều giữa các icon */
+}
+
+.icons-container img {
+    width: 50px; /* Kích thước các icon giống nhau */
+    height: 50px; /* Cân đối chiều cao */
+    object-fit: contain; /* Đảm bảo hình ảnh không bị bóp méo */
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-content div {
+        margin-bottom: 20px;
+    }
+
+
+
+    .footer-content .logo {
+        width: 60px; /* Thu nhỏ logo trên màn hình nhỏ */
+    }
+}

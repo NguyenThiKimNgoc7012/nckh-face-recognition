@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ưu đãi khách hàng thân thiết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        .discount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6A4BBC;
+        }
+        button {
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #6A4BBC;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5638A1;
+        }
+        /* Định dạng nút quay lại để nằm ngoài container */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #6A4BBC;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            color: #5638A1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nút quay lại đặt bên ngoài container -->
+    <button class="back-button" onclick="goBack()">←</button>
+
+    <div class="container">
+        <h2>Chào mừng quay lại, {{ name }}!</h2>
+        <p>Bạn đã quay lại {{ visitCount }} lần.</p>  
+        <p>Bạn hiện tại có hạng: <strong>{{ level }}</strong></p>
+        <p>Ưu đãi của bạn: <span class="discount">{{ discount }}% giảm giá</span></p>
+        <button onclick="redeemOffer()">Nhận ưu đãi</button>
+    </div>
+
+    <script>
+        // Lấy số lần quay lại từ localStorage
+        function getVisitCount() {
+            let count = localStorage.getItem("visitCount");
+            if (!count) {
+                count = 1;
+            } else {
+                count = parseInt(count) + 1;
+            }
+            localStorage.setItem("visitCount", count);
+            return count;
+        }
+
+        // Gọi hàm để lấy số lần quay lại
+        let visitCount = getVisitCount();
+
+        // Hiển thị số lần quay lại
+        document.querySelector("p").innerHTML = `Bạn đã quay lại ${visitCount} lần.`;
+
+        // Chức năng nhận ưu đãi
+        function redeemOffer() {
+            alert("Bạn đã nhận ưu đãi giảm giá! Hãy sử dụng ngay.");
+        }
+
+        // Chức năng quay lại trang chính
+        function goBack() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>

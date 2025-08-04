@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhận diện khuôn mặt - Raspberry Pi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        img {
+            width: 640px;
+            border: 2px solid #6A4BBC;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            background-color: #6A4BBC;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5638A1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Nhận diện khuôn mặt từ Raspberry Pi</h2>
+    <img id="cameraFeed" src="/video_feed" alt="Camera Feed" />
+
+    <!-- Nút chụp ảnh -->
+    <button id="capture-photo">Chụp ảnh</button>
+
+    <!-- Nút phát nhạc thử -->
+    <button id="test-music">Phát nhạc thử</button>
+
+    <script>
+        // Gửi yêu cầu phát nhạc thử nghiệm
+        document.getElementById("test-music").addEventListener("click", function () {
+            fetch('/play_test_music', { method: "POST" })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                    } else {
+                        alert(data.message || "❌ Lỗi khi phát nhạc thử.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Lỗi:", error);
+                    alert("❌ Không thể phát nhạc thử.");
+                });
+        });
+
+        // Gửi yêu cầu chụp ảnh và nhận diện khuôn mặt
+        document.getElementById("capture-photo").addEventListener("click", function () {
+            fetch('/capture_and_identify', { method: "POST" })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.redirect_url) {
+                        // Điều hướng đến trang tương ứng (ưu đãi hoặc thêm khách hàng mới)
+                        window.location.href = data.redirect_url;
+                    } else {
+                        alert(data.message || "❌ Không nhận diện được khuôn mặt.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Lỗi:", error);
+                    alert("❌ Có lỗi khi chụp ảnh.");
+                });
+        });
+    </script>
+</body>
+</html>

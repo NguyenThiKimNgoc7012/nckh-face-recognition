@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin khách hàng mới</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EDEAFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+        .video-container {
+            margin-top: 20px;
+            border: 2px solid #6A4BBC;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #6A4BBC;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: #5638A1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thông tin khách hàng mới</h2>
+        <form id="customer-form">
+            <div class="input-group">
+                <label for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
+            </div>
+            <div class="input-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+            </div>
+            <button type="submit" class="submit-btn">Bắt đầu thu thập dữ liệu</button>
+        </form>
+
+        <h3>Camera</h3>
+        <img id="cameraFeed" src="/video_feed" class="video-container" alt="Camera Feed">
+
+    </div>
+
+    <script>
+        document.getElementById("customer-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+    
+            const fullname = document.getElementById("fullname").value;
+            const phone = document.getElementById("phone").value;
+    
+            const response = await fetch("/capture_and_save_new_customer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fullname, phone })  // Chuyển dữ liệu thành JSON
+            });
+    
+            const result = await response.json();
+            if (result.success) {
+                alert("✅ Đã thu thập dữ liệu thành công!");
+            } else {
+                alert("⚠️ Lỗi: " + result.message);
+            }
+        });
+    </script>
+    
+</body>
+</html>
